@@ -1,38 +1,20 @@
-
-import java.util.Scanner;
-
 public class Palindrome {
-
     public static void main(String[] args) {
+        if (args == null || args.length == 0) {
+            System.out.println("Отсутствуют входные значения");
+            return;
+        }
 
-        Scanner console = new Scanner(System.in);
-        String Strings = console.nextLine();
-        String s = reverseString(Strings);
-        System.out.println(isPalindrome(s));
-
-        if (isPalindrome(s)==true)
-        {
-            System.out.println("is polidrome");
-        } else System.out.println("no polidrom");
+        for (String word : args) {
+            if (word.equals(reverseString(word))) {
+                System.out.println(String.format("%s является палиндромом", word));
+            } else {
+                System.out.println(String.format("%s не является палиндромом", word));
+            }
+        }
     }
 
-    public static String reverseString(String Strings)
-    {
-        String a = "";
-        for (int i = 0; i < Strings.length(); i++)
-        {
-            a = Strings.charAt(i) + a;
-        }
-        return a;
-    }
-
-    public static boolean isPalindrome(String s)
-    {
-        String str = "";
-        for (int i = 0; i < s.length(); i++)
-        {
-            str = s.charAt(i) + str;
-        }
-        return str.equals(s);
+    private static String reverseString(String word) {
+        return new StringBuilder(word).reverse().toString();
     }
 }
